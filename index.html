@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Charene Model School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Caveat:wght@700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+/* Layout (from the Bright Path school template): warm cream page, centred headline with one hand-written accent phrase and a
+   scribbled underline, pill tag, two buttons, tilted photo cards; a scalloped cloud divider into pastel programme cards with icon
+   tiles; a dark stats card overlapping a tilted photo; activity photo grid; parent quotes; admissions form; FAQ.
+   Single theme in Charene's own colours: uniform purple + yellow, crest navy-purple and gold. */
+:root{
+  --cream:#FBF6EC;
+  --sand:#F1E7D3;
+  --ink:#2B1B3D;      /* crest shield navy-purple */
+  --purple:#93399A;   /* sampled from the uniforms */
+  --yellow:#F9B83D;   /* sampled from the uniforms */
+  --gold:#C49A3A;     /* crest gold */
+  --soft:#6C5F78;
+  --line:#E6DAC4;
+  --head:"Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --hand:"Caveat", "Comic Sans MS", cursive;
+  --body:"Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--cream);color:var(--ink);font:17px/1.6 var(--body);margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--head);font-weight:800;margin:0;line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--purple);outline-offset:3px;border-radius:12px}
+.hand{font-family:var(--hand);color:var(--purple);font-weight:700;letter-spacing:0;position:relative;display:inline-block;padding-inline:.06em}
+.hand svg.u{position:absolute;left:-4%;bottom:-.12em;width:108%;height:.32em;overflow:visible}
+.hand svg.s{position:absolute;right:-.42em;top:-.05em;width:.42em;height:.42em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:13px 24px;font:700 16px var(--body);text-decoration:none;cursor:pointer;border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--ink)}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-o{background:#fff;color:var(--ink)}
+.btn-p{background:var(--ink);color:#fff}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#F5D9F2;color:var(--purple);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--purple)}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(251,246,236,.92);backdrop-filter:blur(10px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--cream)}
+.nav{display:flex;align-items:center;gap:20px;padding-block:12px}
+.nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 18px/1.05 var(--head)}
+.nav .brand img{height:46px;width:auto}
+.nav .brand small{display:block;font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.nav nav{display:flex;gap:24px;margin-inline:auto;font-weight:600}
+.nav nav a{text-decoration:none}.nav nav a:hover{color:var(--purple)}
+.nav .btn{padding:10px 18px;font-size:15px}
+@media (max-width:860px){.nav nav{display:none}.nav{justify-content:space-between}.nav .brand span{display:none}}
+
+/* hero */
+.hero{text-align:center;padding-block:40px 30px}
+.hero h1{font-size:clamp(42px,7vw,90px);margin-top:18px}
+.hero .hand{font-size:1.22em;line-height:.8}
+.hero p.sub{max-width:52ch;margin:22px auto 0;color:var(--soft);font-size:19px}
+.hero .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.tilts{display:flex;justify-content:center;align-items:flex-end;gap:18px;margin-top:46px;padding-inline:10px}
+.tilts img{width:min(30%,300px);aspect-ratio:4/5;object-fit:cover;border-radius:22px;border:5px solid #fff;box-shadow:0 20px 40px -24px rgba(43,27,61,.5)}
+.tilts img:nth-child(1){transform:rotate(-6deg) translateY(12px)}
+.tilts img:nth-child(2){transform:rotate(2deg);width:min(34%,340px)}
+.tilts img:nth-child(3){transform:rotate(7deg) translateY(16px)}
+.blob{position:absolute;border-radius:40% 60% 55% 45%;z-index:-1}
+
+/* scallop + programmes */
+.scallop{height:70px;background:radial-gradient(circle at 50px 70px,var(--sand) 49px,transparent 50px) 0 0/100px 70px repeat-x;margin-top:50px}
+.progs{background:var(--sand);padding-block:30px 90px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.head h2{font-size:clamp(38px,5.4vw,66px)}
+.head .hand{font-size:1.2em}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.card{border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px;min-height:220px;border:2px solid transparent}
+.card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.65);border:2px solid var(--ink);font:800 18px var(--head)}
+.card h3{font-size:26px;margin-top:8px}
+.card p{color:#4c4058;font-size:15px}
+.card .age{margin-top:auto;font-weight:700;font-size:14px}
+.c1{background:#E6D7F3}.c2{background:#FCE7B8}.c3{background:#D7EBD9}.c4{background:#F8D8E4}.c5{background:#D6E6F5}.c6{background:#F3E1CC}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+
+/* stats */
+section{padding-block:90px}
+.stats{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
+.stats .dark{background:var(--ink);color:#fff;border-radius:28px;padding:36px;position:relative;z-index:2;margin-right:-60px}
+.stats .row{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:20px;border-bottom:1px solid rgba(255,255,255,.18)}
+.stats .row b{font:800 clamp(38px,5vw,62px)/1 var(--head);letter-spacing:-.03em;color:var(--yellow)}
+.stats .row span{text-align:right;color:#d9cfe4;max-width:20ch}
+.stats .trust{display:inline-flex;align-items:center;gap:8px;margin-top:24px;background:rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;font-size:15px}
+.stats .trust::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+.stats img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px;transform:rotate(3deg);border:6px solid #fff;box-shadow:0 30px 60px -30px rgba(43,27,61,.5)}
+@media (max-width:820px){.stats{grid-template-columns:1fr}.stats .dark{margin:0 0 -40px}.stats img{width:86%;justify-self:end}}
+
+/* day grid */
+.day{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:210px;grid-auto-flow:dense;gap:14px;margin-top:36px}
+.day figure{margin:0;position:relative;border-radius:20px;overflow:hidden}
+.day img{width:100%;height:100%;object-fit:cover}
+.day figcaption{position:absolute;left:10px;bottom:10px;background:#fff;border-radius:999px;padding:4px 12px;font-weight:700;font-size:13px}
+.day .w{grid-column:span 2}.day .t{grid-row:span 2}
+@media (max-width:820px){.day{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:170px}}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+.quotes blockquote{margin:0;background:#fff;border:2px solid var(--ink);border-radius:24px;padding:26px;box-shadow:6px 6px 0 var(--yellow)}
+.quotes q{font:600 21px/1.4 var(--head);letter-spacing:-.01em;quotes:"“" "”"}
+.quotes cite{display:block;font-style:normal;color:var(--soft);margin-top:12px;font-size:15px}
+.stars{color:var(--gold);letter-spacing:3px;margin-bottom:8px}
+@media (max-width:760px){.quotes{grid-template-columns:1fr}}
+
+/* admissions */
+.adm{background:var(--purple);color:#fff;border-radius:32px;padding:clamp(24px,4vw,52px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px;align-items:start}
+.adm h2{font-size:clamp(36px,4.8vw,60px)}
+.adm .hand{color:var(--yellow)}
+.adm p.sub{color:#f3e1f5;margin-top:14px}
+.adm ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.adm li::before{content:"★ ";color:var(--yellow)}
+form{background:#fff;color:var(--ink);border-radius:24px;padding:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+form .full{grid-column:1/-1}
+label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+input,select{width:100%;min-width:0;font:600 16px var(--body);color:var(--ink);background:var(--cream);border:2px solid var(--line);border-radius:12px;padding:11px 12px}
+form .btn{width:100%}
+@media (max-width:820px){.adm{grid-template-columns:1fr}}
+@media (max-width:440px){form{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:820px;margin:36px auto 0;display:grid;gap:10px}
+details{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px 20px}
+details[open]{border-color:var(--ink)}
+summary{cursor:pointer;font:700 19px var(--head);list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";font-size:24px;line-height:1;color:var(--purple)}
+details[open] summary::after{content:"–"}
+details p{color:var(--soft);margin-top:10px}
+footer{background:var(--ink);color:#d9cfe4;margin-top:40px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center;padding-block:30px calc(30px + env(safe-area-inset-bottom,0px))}
+footer img{height:64px}
+footer b{color:#fff}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="img/crest.png" alt="Charene Model School crest"><span>Charene Model School<small>Great beginnings never end</small></span></a>
+    <nav aria-label="Sections"><a href="#programmes">Programmes</a><a href="#day">A day here</a><a href="#admissions">Admissions</a><a href="#faq">FAQ</a></nav>
+    <a class="btn btn-p" href="#admissions">Book a visit</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <span class="pill">Admissions open · Crèche to Primary · Madina New Estates</span>
+    <h1>Where great beginnings
+      <span class="hand">never end
+        <svg class="u" viewBox="0 0 200 20" aria-hidden="true"><path d="M4 14 C 50 4, 120 4, 196 10" stroke="#F9B83D" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M30 18 C 80 12, 140 12, 186 16" stroke="#F9B83D" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        <svg class="s" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 L8 9 M10 14 L16 6 M12 18 L18 15" stroke="#93399A" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </span></h1>
+    <p class="sub">A non-vacation school in Madina New Estates. We welcome children from three months old, teach in small classes, and offer after-school care and a weekend school for busy families.</p>
+    <div class="ctas"><a class="btn btn-y" href="#admissions">Book a school visit</a><a class="btn btn-o" href="#programmes">See programmes</a></div>
+    <div class="tilts">
+      <img src="img/painting.webp" alt="A pupil painting at an easel">
+      <img src="img/lego.webp" alt="Children building with Lego blocks">
+      <img src="img/creche.webp" alt="The crèche room with cots and play mats">
+    </div>
+  </div>
+
+  <div class="scallop" aria-hidden="true"></div>
+  <div class="progs" id="programmes">
+    <div class="wrap">
+      <div class="head"><h2>Pick a <span class="hand">programme</span></h2><a class="btn btn-p" href="#admissions">Ask about a place</a></div>
+      <div class="cards">
+        <article class="card c1"><span class="ic" aria-hidden="true">3m</span><h3>Crèche</h3><p>Gentle, safe care for babies and toddlers, with a dedicated crèche room.</p><span class="age">From 3 months</span></article>
+        <article class="card c2"><span class="ic" aria-hidden="true">Aa</span><h3>Nursery &amp; KG</h3><p>Early reading, numbers, shapes and play-based learning in small groups.</p><span class="age">Toddlers to 5 years</span></article>
+        <article class="card c3"><span class="ic" aria-hidden="true">✎</span><h3>Primary</h3><p>A strong start in literacy and numeracy, carried forward from KG.</p><span class="age">Primary / elementary</span></article>
+        <article class="card c4"><span class="ic" aria-hidden="true">☀</span><h3>Non-vacation</h3><p>We keep going through the holidays, so your child's routine and learning never stop.</p><span class="age">Open all year</span></article>
+        <article class="card c5"><span class="ic" aria-hidden="true">⌂</span><h3>After-school care</h3><p>Supervised homework and play until you can pick up after work.</p><span class="age">Weekdays</span></article>
+        <article class="card c6"><span class="ic" aria-hidden="true">★</span><h3>Weekend school</h3><p>Extra classes and activities on the weekend.</p><span class="age">Weekends</span></article>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap stats">
+      <div class="dark">
+        <div class="row"><b>3 mo</b><span>youngest age we welcome</span></div>
+        <div class="row"><b>Small</b><span>class sizes, so every child is seen</span></div>
+        <div class="row"><b>4.9/5</b><span>from 20 Google reviews</span></div>
+        <div class="row" style="border-bottom:0"><b>All year</b><span>non-vacation, open through the holidays</span></div>
+        <span class="trust">Trusted by families in Madina</span>
+      </div>
+      <img src="img/counting.webp" alt="A pupil counting with colourful blocks at a purple table">
+    </div>
+  </section>
+
+  <section id="day" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><h2>A day at <span class="hand">Charene</span></h2><p style="color:var(--soft);max-width:40ch">Hands-on learning in bright, clean rooms, with plenty of time to play.</p></div>
+      <div class="day">
+        <figure class="w"><img src="img/playroom.webp" alt="Children playing in the colourful playroom"><figcaption>Playroom</figcaption></figure>
+        <figure class="t"><img src="img/drawing.webp" alt="A pupil drawing at her desk"><figcaption>Drawing</figcaption></figure>
+        <figure><img src="img/shapes.webp" alt="Pupils sorting shapes at a table"><figcaption>Shapes</figcaption></figure>
+        <figure><img src="img/puzzle.webp" alt="Pupils doing puzzles"><figcaption>Puzzles</figcaption></figure>
+        <figure><img src="img/outdoor.webp" alt="Pupils playing together outdoors"><figcaption>Outdoor play</figcaption></figure>
+        <figure><img src="img/classroom.webp" alt="A bright classroom with small tables"><figcaption>Our classroom</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><h2>What <span class="hand">parents</span> say</h2></div>
+      <div class="quotes">
+        <blockquote><div class="stars">★★★★★</div><q>The school has really developed my wards in every way a child is to be developed. The environment for learning is the best.</q><cite>Enock R., parent · Google review</cite></blockquote>
+        <blockquote><div class="stars">★★★★★</div><q>Clean and a very beautiful environment. I love their idea of small class sizes.</q><cite>Anita D., parent · Google review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="admissions" style="padding-top:0">
+    <div class="wrap adm">
+      <div>
+        <h2>Come and <span class="hand">see us</span></h2>
+        <p class="sub">Tell us about your child and pick a day. We'll confirm your visit on WhatsApp and show you around.</p>
+        <ul><li>Meet the teachers</li><li>See the classrooms and crèche</li><li>Ask about fees and the school calendar</li></ul>
+      </div>
+      <form id="vf" novalidate>
+        <div><label for="age">Child's age</label><select id="age"><option>3–11 months</option><option>1 year</option><option selected>2 years</option><option>3 years</option><option>4 years</option><option>5 years</option><option>6+ years</option></select></div>
+        <div><label for="prog">Interested in</label><select id="prog"><option>Crèche</option><option selected>Nursery &amp; KG</option><option>Primary</option><option>After-school care</option><option>Weekend school</option></select></div>
+        <div><label for="day2">Visit day</label><select id="day2"><option>Monday</option><option>Tuesday</option><option selected>Wednesday</option><option>Thursday</option><option>Friday</option></select></div>
+        <div><label for="time">Time</label><select id="time"><option>Morning</option><option>Afternoon</option></select></div>
+        <div class="full"><label for="nm">Parent's name</label><input id="nm" autocomplete="name" placeholder="e.g. Mrs. Abena Owusu"></div>
+        <div class="full"><a class="btn btn-y" id="send" href="#" target="_blank" rel="noopener">Book my visit on WhatsApp</a></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" style="justify-content:center;text-align:center"><h2>Questions <span class="hand">parents ask</span></h2></div>
+      <div class="faq">
+        <details open><summary>What's the youngest age you take?</summary><p>We enrol children from three months old in our crèche.</p></details>
+        <details><summary>Do you close for the holidays?</summary><p>No. Charene is a non-vacation school, so care and learning continue through the school holidays.</p></details>
+        <details><summary>Do you offer after-school care?</summary><p>Yes. Children can stay after classes for supervised homework and play until pick-up.</p></details>
+        <details><summary>Is there a weekend school?</summary><p>Yes, we run a weekend school. Message us for days and times.</p></details>
+        <details><summary>Where are you?</summary><p>Madina New Estates, Accra. Call 055 901 6455 for directions.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><img src="img/crest.png" alt="Charene Model School"><div><b>Charene Model School</b><br>Madina New Estates, Accra</div><div>Call / WhatsApp <b>055 901 6455</b><br>Open until 6pm · @charenemodel_school</div></div></footer>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+function upd(){
+  let m=`Hello Charene Model School, I'd like to book a school visit.\nChild's age: ${$('age').value}\nInterested in: ${$('prog').value}\nVisit: ${$('day2').value} ${$('time').value.toLowerCase()}`;
+  if($('nm').value.trim()) m+=`\nParent: ${$('nm').value.trim()}`;
+  $('send').href='https://wa.me/233559016455?text='+encodeURIComponent(m);
+}
+['age','prog','day2','time','nm'].forEach(id=>$(id).addEventListener('input',upd));
+$('vf').addEventListener('submit',e=>e.preventDefault());
+upd();
+})();
+</script>
+
+</body>
+</html>
