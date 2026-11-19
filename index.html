@@ -141,6 +141,35 @@ footer{background:var(--ink);color:#d9cfe4;margin-top:40px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center;padding-block:30px calc(30px + env(safe-area-inset-bottom,0px))}
 footer img{height:64px}
 footer b{color:#fff}
+
+/* playful background: sky-to-cream wash + confetti, and a fixed layer of floating toys behind everything */
+body{background:
+  radial-gradient(circle at 12% 18%,rgba(249,184,61,.35) 0 5px,transparent 6px),
+  radial-gradient(circle at 78% 9%,rgba(147,57,154,.28) 0 4px,transparent 5px),
+  radial-gradient(circle at 44% 62%,rgba(93,176,225,.30) 0 5px,transparent 6px),
+  radial-gradient(circle at 88% 74%,rgba(242,120,155,.30) 0 4px,transparent 5px),
+  radial-gradient(circle at 25% 88%,rgba(110,190,120,.32) 0 5px,transparent 6px),
+  linear-gradient(180deg,#DDF0FB 0%,#F4F0FA 28%,#FBF6EC 55%,#FFF4DC 100%);
+  background-size:260px 260px,300px 300px,340px 340px,280px 280px,320px 320px,100% 100%;
+  background-attachment:fixed}
+header{background:rgba(232,243,251,.88)}
+.toys{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+main,footer{position:relative;z-index:1}
+header{z-index:20}
+.toy{position:absolute;width:var(--s,64px);height:auto;opacity:.9;filter:drop-shadow(0 6px 8px rgba(43,27,61,.12))}
+@media (prefers-reduced-motion:no-preference){
+  .toy{animation:bob var(--d,7s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+  .toy.rise{animation:rise var(--d,22s) linear infinite;animation-delay:var(--dl,0s)}
+  .toy.spin{animation:spin var(--d,14s) linear infinite}
+  .toy.drift{animation:drift var(--d,26s) linear infinite;animation-delay:var(--dl,0s)}
+  @keyframes bob{from{transform:translateY(0) rotate(var(--r,-6deg))}to{transform:translateY(-22px) rotate(calc(var(--r,-6deg) * -1))}}
+  @keyframes rise{from{transform:translateY(0)}to{transform:translateY(-130vh)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes drift{from{transform:translateX(-20vw)}to{transform:translateX(120vw)}}
+}
+@media (max-width:700px){.toy{--s:44px !important;opacity:.75}.toy.hide-sm{display:none}}
+.progs{background:rgba(241,231,211,.9)}
+.scallop{background:radial-gradient(circle at 50px 70px,rgba(241,231,211,.9) 49px,transparent 50px) 0 0/100px 70px repeat-x}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
 <style>body{margin:0}</style>
@@ -155,6 +184,25 @@ footer b{color:#fff}
   </div>
 </header>
 
+<div class="toys" aria-hidden="true">
+<svg class="toy" style="--s:70px;left:4%;top:22%;--r:-8deg;--d:6s" viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="8" fill="#F9B83D" stroke="#2B1B3D" stroke-width="3"/><text x="30" y="43" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="34" fill="#93399A">A</text></svg>
+<svg class="toy" style="--s:58px;left:9%;top:31%;--r:7deg;--d:7.5s;--dl:-2s" viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="8" fill="#93399A" stroke="#2B1B3D" stroke-width="3"/><text x="30" y="43" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="34" fill="#FFFFFF">B</text></svg>
+<svg class="toy hide-sm" style="--s:62px;right:6%;top:58%;--r:-5deg;--d:8s;--dl:-1s" viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="8" fill="#5DB0E1" stroke="#2B1B3D" stroke-width="3"/><text x="30" y="43" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="34" fill="#FFFFFF">C</text></svg>
+<svg class="toy rise" style="--s:54px;left:16%;top:105%;--d:24s" viewBox="0 0 40 80"><ellipse cx="20" cy="20" rx="16" ry="19" fill="#F2789B"/><path d="M20 39 l-3 4 h6z" fill="#F2789B"/><path d="M20 43 C 14 55, 26 62, 18 78" stroke="#2B1B3D" stroke-width="1.5" fill="none"/><ellipse cx="14" cy="13" rx="4" ry="6" fill="#fff" opacity=".5"/></svg>
+<svg class="toy rise" style="--s:48px;left:72%;top:110%;--d:28s;--dl:-9s" viewBox="0 0 40 80"><ellipse cx="20" cy="20" rx="16" ry="19" fill="#F9B83D"/><path d="M20 39 l-3 4 h6z" fill="#F9B83D"/><path d="M20 43 C 14 55, 26 62, 18 78" stroke="#2B1B3D" stroke-width="1.5" fill="none"/><ellipse cx="14" cy="13" rx="4" ry="6" fill="#fff" opacity=".5"/></svg>
+<svg class="toy rise hide-sm" style="--s:50px;left:44%;top:115%;--d:31s;--dl:-17s" viewBox="0 0 40 80"><ellipse cx="20" cy="20" rx="16" ry="19" fill="#93399A"/><path d="M20 39 l-3 4 h6z" fill="#93399A"/><path d="M20 43 C 14 55, 26 62, 18 78" stroke="#2B1B3D" stroke-width="1.5" fill="none"/><ellipse cx="14" cy="13" rx="4" ry="6" fill="#fff" opacity=".5"/></svg>
+<svg class="toy spin hide-sm" style="--s:90px;right:4%;top:11%;--d:40s" viewBox="0 0 100 100"><g stroke="#F9B83D" stroke-width="6" stroke-linecap="round"><path d="M50 4v12M50 84v12M4 50h12M84 50h12M17 17l9 9M74 74l9 9M83 17l-9 9M26 74l-9 9"/></g><circle cx="50" cy="50" r="24" fill="#F9B83D"/></svg>
+<svg class="toy drift" style="--s:130px;left:0;top:7%;--d:55s;opacity:.85" viewBox="0 0 130 60"><path d="M20 50 h90 a18 18 0 0 0 -6 -35 a26 26 0 0 0 -48 -4 a20 20 0 0 0 -36 18 a12 12 0 0 0 0 21z" fill="#fff"/></svg>
+<svg class="toy drift hide-sm" style="--s:100px;left:0;top:44%;--d:70s;--dl:-30s;opacity:.7" viewBox="0 0 130 60"><path d="M20 50 h90 a18 18 0 0 0 -6 -35 a26 26 0 0 0 -48 -4 a20 20 0 0 0 -36 18 a12 12 0 0 0 0 21z" fill="#fff"/></svg>
+<svg class="toy" style="--s:56px;right:12%;top:36%;--r:10deg;--d:5.5s" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#fff" stroke="#2B1B3D" stroke-width="3"/><path d="M30 4 A26 26 0 0 1 56 30 L30 30Z" fill="#F2789B"/><path d="M30 56 A26 26 0 0 1 4 30 L30 30Z" fill="#5DB0E1"/><path d="M4 30 A26 26 0 0 1 30 4 L30 30Z" fill="#F9B83D"/></svg>
+<svg class="toy" style="--s:34px;left:30%;top:14%;--r:15deg;--d:4.5s" viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6-6.3 3.6 1.5-7L2 9.3l7-.8z" fill="#F9B83D"/></svg>
+<svg class="toy" style="--s:26px;right:28%;top:24%;--r:-15deg;--d:5s;--dl:-2s" viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6-6.3 3.6 1.5-7L2 9.3l7-.8z" fill="#93399A"/></svg>
+<svg class="toy hide-sm" style="--s:30px;left:6%;top:70%;--r:20deg;--d:6s;--dl:-3s" viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6-6.3 3.6 1.5-7L2 9.3l7-.8z" fill="#5DB0E1"/></svg>
+<svg class="toy hide-sm" style="--s:90px;left:2%;top:50%;--r:-28deg;--d:7s" viewBox="0 0 100 20"><rect x="14" y="3" width="76" height="14" rx="3" fill="#93399A"/><path d="M14 3 L0 10 L14 17Z" fill="#F3D9B1"/><path d="M5 7.5 L0 10 L5 12.5Z" fill="#93399A"/><rect x="30" y="3" width="6" height="14" fill="#2B1B3D" opacity=".25"/></svg>
+<svg class="toy" style="--s:80px;right:3%;top:83%;--r:22deg;--d:6.5s;--dl:-1s" viewBox="0 0 100 20"><rect x="14" y="3" width="76" height="14" rx="3" fill="#6EBE78"/><path d="M14 3 L0 10 L14 17Z" fill="#F3D9B1"/><path d="M5 7.5 L0 10 L5 12.5Z" fill="#6EBE78"/><rect x="30" y="3" width="6" height="14" fill="#2B1B3D" opacity=".25"/></svg>
+<svg class="toy hide-sm" style="--s:70px;right:20%;top:6%;--r:8deg;--d:6s" viewBox="0 0 60 100"><path d="M30 2 L56 34 L30 66 L4 34Z" fill="#F2789B" stroke="#2B1B3D" stroke-width="2"/><path d="M30 2 V66 M4 34 H56" stroke="#2B1B3D" stroke-width="1.5"/><path d="M30 66 C 24 76, 36 82, 28 98" stroke="#2B1B3D" stroke-width="1.5" fill="none"/><path d="M26 76 l6 2 M30 86 l-6 2" stroke="#F9B83D" stroke-width="4" stroke-linecap="round"/></svg>
+<svg class="toy drift" style="--s:52px;left:0;top:28%;--d:34s;--dl:-12s" viewBox="0 0 60 40"><path d="M2 20 L58 2 L40 38 L30 24Z" fill="#fff" stroke="#2B1B3D" stroke-width="2" stroke-linejoin="round"/><path d="M30 24 L58 2" stroke="#2B1B3D" stroke-width="1.5"/></svg>
+</div>
 <main id="top">
   <div class="wrap hero">
     <span class="pill">Admissions open · Crèche to Primary · Madina New Estates</span>
